@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { addPost } from '../../Actions/postActions'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const CreatePost = () => {
+const CreatePost = ({ addPost }) => {
 
     // const [description, setDescription] = useState('')
     // const [tag, setTag] = useState()
@@ -15,9 +18,16 @@ const CreatePost = () => {
         if (form.description === "" || form.tag_list === "") {
             M.toast({ html: 'Please enter the appropriate stuff' })
         } else {
-
+            const newPost = {
+                description: form.description,
+                tag_list: form.tag_list
+            }
             console.log(form)
+            addPost(newPost)
+
+            M.toast({ html: 'Post added' })
         }
+
     }
 
 
@@ -56,9 +66,12 @@ const CreatePost = () => {
     )
 }
 
+CreatePost.propTypes = {
+    addPost: PropTypes.func.isRequired,
+}
 
 const modal = {
     width: '75%',
     height: '75%'
 }
-export default CreatePost
+export default connect(null, { addPost })(CreatePost)
