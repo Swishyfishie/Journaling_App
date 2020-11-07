@@ -1,24 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux'
 import Post from './Post'
-const Posts = () => {
+import PropTypes from 'prop-types'
+import { getPosts } from '../../Actions/postActions'
 
-    const [posts, setPosts] = useState([])
+const Posts = ({ post: { posts, loading }, getPosts }) => {
 
-    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         getPosts()
     }, [])
 
-    const getPosts = async () => {
-        setLoading(true)
-        const res = await fetch("http://localhost:3000/posts")
-        const data = await res.json()
-        setPosts(data)
-        setLoading(false)
-    }
 
-    if (loading) {
+    if (loading || posts === null) {
         return <h4>Loading...</h4>
     }
     return (
@@ -34,4 +28,13 @@ const Posts = () => {
     )
 }
 
-export default Posts
+
+Posts.propTypes = {
+    post: PropTypes.object.isRequired,
+}
+
+const mapStateToProps = state => ({
+    post: state.post // the second post pretains to the root reducer (index.js)
+})
+
+export default connect(mapStateToProps, { getPosts })(Posts)

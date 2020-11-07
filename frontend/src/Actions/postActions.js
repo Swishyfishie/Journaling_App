@@ -1,14 +1,13 @@
 import { GET_POSTS, SET_LOADING, POSTS_ERROR } from './types'
 
-export const getLogs = () => async dispatch => {
+export const getPosts = () => async dispatch => {
     try {
         setLoading();
-
         const res = await fetch('http://localhost:3000/posts')
         const data = await res.json()
 
         dispatch({
-            type: GET_LOGS,
+            type: GET_POSTS,
             payload: data
         })
     } catch (err) {
