@@ -3,6 +3,14 @@ import 'materialize-css/dist/css/materialize.min.css'
 import M from 'materialize-css/dist/js/materialize.min.js'
 import Navbar from './Components/Navbar'
 import Posts from './Components/Posts/Posts'
+import AddPostButton from './Components/AddPostButton'
+import CreatePost from './Components/Posts/CreatePost'
+
+
+
+
+
+
 const App = () => {
   useEffect(() => {
     //initialize materialize js so I can use modals and stuff
@@ -11,7 +19,11 @@ const App = () => {
   return (
     <Fragment>
       <Navbar />
-      <Posts />
+      <div className="container">
+        <AddPostButton />
+        <CreatePost />
+        <Posts />
+      </div>
     </Fragment>
   );
 }

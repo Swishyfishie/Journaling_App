@@ -13,9 +13,6 @@ const Navbar = () => {
                 </div>
                 <div className="nav-content">
                     <span className="nav-title">Add a post</span>
-                    <a className="btn-floating btn-large halfway-fab waves-effect waves-light teal">
-                        <i className="material-icons">add</i>
-                    </a>
                 </div>
             </nav>
         </div>
