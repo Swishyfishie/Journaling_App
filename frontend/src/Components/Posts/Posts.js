@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import Post from './Post'
 const Posts = () => {
 
     const [posts, setPosts] = useState([])
@@ -22,22 +22,13 @@ const Posts = () => {
         return <h4>Loading...</h4>
     }
     return (
-        <ul className="collection-with-header">
-            <li className="collection-header">
+        <ul className="collection with-header">
+            <li style={{ marginBottom: '20px' }} className="collection-header">
                 <h4 className="center">Your posts</h4>
             </li>
-            <p>Number of posts: {posts.length}</p>
             <div className="container">
-                {posts.map(p => {
-                    return (
-
-                        <div key={p.id}>
-                            <li>Description: {p.description}</li>
-                            <li>Tags: {p.tag_list[0]}</li>
-                            <p>---------------------</p>
-                        </div>
-                    )
-                })}
+                {posts.map(post => <Post post={post} key={post.id} />)}
+                <p>Number of posts: {posts.length}</p>
             </div>
         </ul>
     )
