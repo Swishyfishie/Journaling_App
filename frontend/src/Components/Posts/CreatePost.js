@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import M from 'materialize-css/dist/js/materialize.min.js'
 
 const CreatePost = () => {
 
@@ -11,7 +12,12 @@ const CreatePost = () => {
         tag_list: ''
     })
     const onSubmit = () => {
-        // console.log(description, tag)
+        if (form.description === "" || form.tag_list === "") {
+            M.toast({ html: 'Please enter the appropriate stuff' })
+        } else {
+
+            console.log(form)
+        }
     }
 
 
