@@ -6,13 +6,11 @@ import M from 'materialize-css/dist/js/materialize.min.js'
 
 const CreatePost = ({ addPost }) => {
 
-    // const [description, setDescription] = useState('')
-    // const [tag, setTag] = useState()
-
 
     const [form, setState] = useState({
         description: '',
         tag_list: ''
+
     })
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -28,8 +26,11 @@ const CreatePost = ({ addPost }) => {
             addPost(newPost)
 
             M.toast({ html: 'Post added' })
-            debugger
-            e.target.reset()
+            setState({
+                description: '',
+                tag_list: ''
+
+            })
         }
 
     }
@@ -44,7 +45,7 @@ const CreatePost = ({ addPost }) => {
                         <div className="input-field">
                             <input type="text"
                                 name="description"
-
+                                value={form.description}
                                 onChange={e => setState({ ...form, [e.target.name]: e.target.value })}
                             />
                             <label htmlFor="post" className="active">
@@ -55,7 +56,7 @@ const CreatePost = ({ addPost }) => {
                             <input
                                 type="text"
                                 name="tag_list"
-
+                                value={form.tag_list}
                                 onChange={e => setState({ ...form, [e.target.name]: e.target.value })}
                             />
                             <label htmlFor="tag" className="active">
