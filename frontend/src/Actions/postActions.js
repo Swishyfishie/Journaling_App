@@ -1,4 +1,4 @@
-import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST } from './types'
+import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST } from './types'
 
 export const getPosts = () => async dispatch => {
     try {
@@ -36,6 +36,28 @@ export const addPost = (post) => async dispatch => {
         dispatch({
             type: ADD_POST,
             payload: data
+        })
+    } catch (err) {
+        dispatch({
+            type: POSTS_ERROR,
+            payload: err.response.data
+        })
+    }
+
+
+}
+
+// delete logs
+export const deletePost = (id) => async dispatch => {
+    try {
+        setLoading();
+        const res = await fetch('http://localhost:3000/posts/' + id, {
+            method: "DELETE"
+        })
+
+        dispatch({
+            type: DELETE_POST,
+            payload: id
         })
     } catch (err) {
         dispatch({
