@@ -14,7 +14,8 @@ const CreatePost = ({ addPost }) => {
         description: '',
         tag_list: ''
     })
-    const onSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         if (form.description === "" || form.tag_list === "") {
             M.toast({ html: 'Please enter the appropriate stuff' })
         } else {
@@ -22,10 +23,13 @@ const CreatePost = ({ addPost }) => {
                 description: form.description,
                 tag_list: form.tag_list
             }
+
             console.log(form)
             addPost(newPost)
 
             M.toast({ html: 'Post added' })
+            debugger
+            e.target.reset()
         }
 
     }
@@ -36,32 +40,38 @@ const CreatePost = ({ addPost }) => {
             <div className="modal-content">
                 <h4>Enter some stuff</h4>
                 <div className="row">
-                    <div className="input-field">
-                        <input type="text"
-                            name="description"
+                    <form onSubmit={handleSubmit}>
+                        <div className="input-field">
+                            <input type="text"
+                                name="description"
 
-                            onChange={e => setState({ ...form, [e.target.name]: e.target.value })}
-                        />
-                        <label htmlFor="post" className="active">
-                            Write a detailed description about your studying
+                                onChange={e => setState({ ...form, [e.target.name]: e.target.value })}
+                            />
+                            <label htmlFor="post" className="active">
+                                Write a detailed description about your studying
                         </label>
-                    </div>
-                    <div className="input-field">
-                        <input
-                            type="text"
-                            name="tag_list"
+                        </div>
+                        <div className="input-field">
+                            <input
+                                type="text"
+                                name="tag_list"
 
-                            onChange={e => setState({ ...form, [e.target.name]: e.target.value })}
-                        />
-                        <label htmlFor="tag" className="active">
-                            Enter a tag
+                                onChange={e => setState({ ...form, [e.target.name]: e.target.value })}
+                            />
+                            <label htmlFor="tag" className="active">
+                                Enter a tag
                         </label>
-                    </div>
+                        </div>
+                        <div className="modal-footer">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Add
+                                <i class="material-icons right">send</i>
+                            </button>
+                            {/* add styling to the submit button */}
+                        </div>
+                    </form>
                 </div>
             </div>
-            <div className="modal-footer">
-                <a href="#!" onClick={onSubmit} className="modal-close waves green btn-flat">Add</a>
-            </div>
+
         </div>
     )
 }
