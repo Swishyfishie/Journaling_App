@@ -5,7 +5,8 @@ import Navbar from './Components/Navbar'
 import Posts from './Components/Posts/Posts'
 import AddPostButton from './Components/AddPostButton'
 import CreatePost from './Components/Posts/CreatePost'
-
+import { Provider } from 'react-redux'
+import store from './store'
 
 
 
@@ -17,14 +18,17 @@ const App = () => {
     M.AutoInit()
   })
   return (
-    <Fragment>
-      <Navbar />
-      <div className="container">
-        <AddPostButton />
-        <CreatePost />
-        <Posts />
-      </div>
-    </Fragment>
+    <Provider store={store}>
+      <Fragment>
+        <Navbar />
+        <div className="container">
+          <AddPostButton />
+          <CreatePost />
+          <Posts />
+        </div>
+      </Fragment>
+    </Provider>
+
   );
 }
 

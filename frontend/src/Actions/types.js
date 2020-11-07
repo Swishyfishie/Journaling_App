@@ -1,0 +1,6 @@
+export const GET_POSTS = 'GET_POSTS'
+export const ADD_POST = 'ADD_POST'
+export const DELETE_POST = 'DELETE_POST'
+export const GET_TAGS = 'GET_TAGS'
+export const SET_LOADING = 'SET_LOADING'
+export const POSTS_ERROR = 'POSTS_ERROR'
