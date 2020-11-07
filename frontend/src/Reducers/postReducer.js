@@ -1,8 +1,7 @@
 import { GET_POSTS, SET_LOADING, POSTS_ERROR } from '../Actions/types'
 
 const initialState = {
-    description: null,
-    tag_list: null,
+    posts: null,
     loading: false,
     error: null
 }
