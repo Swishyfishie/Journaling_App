@@ -7,6 +7,7 @@ const SearchBar = ({ searchPosts }) => {
     const text = useRef('')
 
     const onChange = e => {
+        // e.preventDefault()
 
         if (e.key === 'Enter') {
 
@@ -16,7 +17,7 @@ const SearchBar = ({ searchPosts }) => {
     return (
         <nav>
             <div className="nav-wrapper blue lighten-3">
-                <form >
+                <form onSubmit={e => { e.preventDefault() }}>
                     <div className="input-field">
                         <input type="search" id="search" placeholder="Search by tag" ref={text} onKeyUp={onChange} />
                         <label className="label-icon" htmlFor="search">

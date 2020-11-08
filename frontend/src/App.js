@@ -8,7 +8,9 @@ import CreatePost from './Components/Posts/CreatePost'
 import UpdatePost from './Components/Posts/UpdatePost'
 import SearchBar from './Components/SearchBar'
 import { Provider } from 'react-redux'
-
+import About from './Components/About'
+import Contact from './Components/Contact'
+import Home from './Components/Home'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import store from './store'
 
@@ -23,17 +25,24 @@ const App = () => {
   return (
     <Provider store={store}>
       <BrowserRouter>
-        <Fragment>
-          <Navbar />
-          <SearchBar />
-          <div className="container">
-            <AddPostButton />
-            <CreatePost />
-            <UpdatePost />
-            <Posts />
-          </div>
-          {/* <Route path="/posts" component={<Posts />} /> */}
-        </Fragment>
+
+        <Navbar />
+        {/* <Switch>
+          <Route path="/about" component={About} />
+        </Switch>
+        
+        <Route path="/contact" component={Contact} />
+        <Route path="/" component={Home} /> */}
+
+        <Switch>
+          <Route path="/about" component={About} />
+        </Switch>
+        <Switch>
+          <Route path="/contact" component={Contact} />
+        </Switch>
+        <Switch>
+          <Route path="/" component={Home} />
+        </Switch>
       </BrowserRouter>
     </Provider>
 

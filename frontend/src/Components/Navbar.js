@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import AddPostButton from './AddPostButton'
 const Navbar = () => {
     return (
         <div>
@@ -38,7 +39,9 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="nav-content">
-                    <span className="nav-title">Add a post</span>
+                    <span className="nav-title">Add a post
+                                        <AddPostButton />
+                    </span>
                 </div>
             </nav>
         </div>
