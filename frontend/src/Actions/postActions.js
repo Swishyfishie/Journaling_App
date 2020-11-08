@@ -1,4 +1,4 @@
-import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST, SET_CURRENT, CLEAR_CURRENT, UPDATE_POST } from './types'
+import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST, SET_CURRENT, CLEAR_CURRENT, UPDATE_POST, SEARCH_POSTS } from './types'
 
 export const getPosts = () => async dispatch => {
     try {
@@ -103,6 +103,26 @@ export const editPost = (post) => async dispatch => {
             payload: data
         })
 
+    } catch (err) {
+        dispatch({
+            type: POSTS_ERROR,
+            payload: err.response.data
+        })
+    }
+
+
+}
+
+export const searchPosts = (tag) => async dispatch => {
+    try {
+        setLoading();
+        const res = await fetch('http://localhost:3000/tags/' + tag)
+        const data = await res.json()
+
+        dispatch({
+            type: SEARCH_POSTS,
+            payload: data
+        })
     } catch (err) {
         dispatch({
             type: POSTS_ERROR,

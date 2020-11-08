@@ -6,6 +6,7 @@ import Posts from './Components/Posts/Posts'
 import AddPostButton from './Components/AddPostButton'
 import CreatePost from './Components/Posts/CreatePost'
 import UpdatePost from './Components/Posts/UpdatePost'
+import SearchBar from './Components/SearchBar'
 import { Provider } from 'react-redux'
 import store from './store'
 
@@ -22,6 +23,7 @@ const App = () => {
     <Provider store={store}>
       <Fragment>
         <Navbar />
+        <SearchBar />
         <div className="container">
           <AddPostButton />
           <CreatePost />

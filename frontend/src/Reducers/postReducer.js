@@ -1,4 +1,4 @@
-import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST, SET_CURRENT, CLEAR_CURRENT, UPDATE_POST } from '../Actions/types'
+import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST, SET_CURRENT, CLEAR_CURRENT, UPDATE_POST, SEARCH_POSTS } from '../Actions/types'
 
 const initialState = {
     posts: null,
@@ -30,6 +30,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 posts: state.posts.map(post => post.id === action.payload.id ? action.payload : post)
+            }
+        case SEARCH_POSTS:
+            return {
+                ...state,
+                posts: action.payload
             }
         case SET_CURRENT:
             return {

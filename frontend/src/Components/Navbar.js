@@ -4,7 +4,7 @@ const Navbar = () => {
     return (
         <div>
             <nav className="nav-extended blue" >
-                <div className="nav-wrapper">
+                <div className="nav-wrapper blue lighten-1">
                     <ul>
                         <li><a>A link</a></li>
                         <li><a>A second link</a></li>

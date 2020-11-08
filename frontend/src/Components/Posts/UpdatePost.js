@@ -26,13 +26,14 @@ const UpdatePost = ({ editPost, current }) => {
         if (form.description === "" || form.tag_list === "") {
             M.toast({ html: 'Please enter the appropriate stuff' })
         } else {
-            const newPost = {
+            const updatePost = {
+                id: current.id,
                 description: form.description,
                 tag_list: form.tag_list
             }
 
-            console.log(form)
-            editPost(newPost)
+            // console.log(form
+            editPost(updatePost)
 
             M.toast({ html: 'Post edited' })
             setState({
@@ -68,7 +69,7 @@ const UpdatePost = ({ editPost, current }) => {
 
                         </div>
                         <div className="modal-footer">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Add
+                            <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Add
                                 <i class="material-icons right">send</i>
                             </button>
                             {/* add styling to the submit button */}

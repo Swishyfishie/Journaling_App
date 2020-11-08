@@ -3,7 +3,9 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
+
     if params[:tag]
+    # byebug
       @posts = Post.tagged_with(params[:tag])
     else
       @posts = Post.all

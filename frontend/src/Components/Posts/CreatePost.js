@@ -64,7 +64,7 @@ const CreatePost = ({ addPost }) => {
                         </label>
                         </div>
                         <div className="modal-footer">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Add
+                            <button class="btn waves-effect waves-light modal-action modal-close" type="submit" name="action">Add
                                 <i class="material-icons right">send</i>
                             </button>
                             {/* add styling to the submit button */}
