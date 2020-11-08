@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { deletePost } from '../../Actions/postActions'
+import { deletePost, setCurrent } from '../../Actions/postActions'
 import M from 'materialize-css/dist/js/materialize.min.js'
 
-const Post = ({ post, deletePost }) => {
+const Post = ({ post, deletePost, setCurrent }) => {
     const onDelete = () => {
         deletePost(post.id)
         M.toast({ html: 'Post Deleted' })
@@ -13,6 +13,7 @@ const Post = ({ post, deletePost }) => {
         <li className="collection-item">
             <div>
                 <li>Description: {post.description}</li>
+                <a href="#update-post-modal" className={`modal-trigger`} onClick={() => setCurrent(post)}>edit</a>
                 <a href="#!" className="secondary-content">
                     <i className="material-icons grey-text" onClick={onDelete}>delete</i>
                 </a>
@@ -24,7 +25,8 @@ const Post = ({ post, deletePost }) => {
 }
 
 Post.propTypes = {
-    post: PropTypes.object.isRequired
+    post: PropTypes.object.isRequired,
+    setCurrent: PropTypes.func.isRequired
 }
 
-export default connect(null, { deletePost })(Post)
+export default connect(null, { deletePost, setCurrent })(Post)

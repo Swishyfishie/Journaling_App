@@ -1,4 +1,4 @@
-import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST } from './types'
+import { GET_POSTS, SET_LOADING, POSTS_ERROR, ADD_POST, DELETE_POST, SET_CURRENT, CLEAR_CURRENT, UPDATE_POST } from './types'
 
 export const getPosts = () => async dispatch => {
     try {
@@ -59,6 +59,50 @@ export const deletePost = (id) => async dispatch => {
             type: DELETE_POST,
             payload: id
         })
+    } catch (err) {
+        dispatch({
+            type: POSTS_ERROR,
+            payload: err.response.data
+        })
+    }
+
+
+}
+
+// set current post
+
+export const setCurrent = post => {
+    return {
+        type: SET_CURRENT,
+        payload: post
+    }
+}
+// clear current post
+export const clearCurrent = () => {
+    return {
+        type: CLEAR_CURRENT,
+    }
+}
+
+// editPost post
+export const editPost = (post) => async dispatch => {
+    try {
+        setLoading();
+        const res = await fetch('http://localhost:3000/posts/' + post.id, {
+            method: "PUT",
+            body: JSON.stringify(post),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+
+        const data = await res.json()
+
+        dispatch({
+            type: UPDATE_POST,
+            payload: data
+        })
+
     } catch (err) {
         dispatch({
             type: POSTS_ERROR,
