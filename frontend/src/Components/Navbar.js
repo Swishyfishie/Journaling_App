@@ -1,14 +1,40 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
 const Navbar = () => {
     return (
         <div>
+
             <nav className="nav-extended blue" >
                 <div className="nav-wrapper blue lighten-1">
                     <ul>
-                        <li><a>A link</a></li>
-                        <li><a>A second link</a></li>
-                        <li><a>A third link</a></li>
+                        <li>
+                            <NavLink
+                                to="/"
+                                exact
+
+                            >
+                                Home
+                        </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/about"
+                                exact
+
+                            >
+                                About the app
+                        </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                to="/contact"
+                                exact
+
+                            >
+                                Contact Me
+                        </NavLink>
+                        </li>
+
                     </ul>
                 </div>
                 <div className="nav-content">
