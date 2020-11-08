@@ -39,7 +39,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="nav-content">
-                    <span className="nav-title">Add a post
+                    <span className="nav-title">Welcome to your journal
                                         <AddPostButton />
                     </span>
                 </div>
