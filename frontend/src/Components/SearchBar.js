@@ -7,14 +7,18 @@ const SearchBar = ({ searchPosts }) => {
     const text = useRef('')
 
     const onChange = e => {
-        searchPosts(text.current.value)
+
+        if (e.key === 'Enter') {
+
+            searchPosts(text.current.value)
+        }
     }
     return (
         <nav>
             <div className="nav-wrapper blue lighten-3">
                 <form >
                     <div className="input-field">
-                        <input type="search" id="search" placeholder="Search by tag" ref={text} onChange={onChange} />
+                        <input type="search" id="search" placeholder="Search by tag" ref={text} onKeyUp={onChange} />
                         <label className="label-icon" htmlFor="search">
                             <i className="material-icons">search
                              </i>
