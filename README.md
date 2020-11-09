@@ -9,4 +9,4 @@ CD in the frontend
 Run "npm install"
 Run "npm start"
 
-
+MVP done but this project is still in development
