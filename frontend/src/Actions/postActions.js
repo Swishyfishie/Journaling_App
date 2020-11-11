@@ -40,7 +40,7 @@ export const addPost = (post) => async dispatch => {
     } catch (err) {
         dispatch({
             type: POSTS_ERROR,
-            payload: err.response.data
+            payload: err
         })
     }
 
@@ -106,7 +106,7 @@ export const editPost = (post) => async dispatch => {
     } catch (err) {
         dispatch({
             type: POSTS_ERROR,
-            payload: err.response.data
+            payload: err.response
         })
     }
 
